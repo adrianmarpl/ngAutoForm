@@ -1,0 +1,62 @@
+<form novalidate *ngIf="objectProps" (ngSubmit)="onSubmit(form.value)" [formGroup]="form">
+    <div *ngFor="let prop of objectProps" [class]="prop.key+'_field'">
+
+        <div [ngSwitch]="prop.type">
+            <mat-form-field *ngSwitchCase="'text'">
+                <input matInput [formControlName]="prop.key" [readonly]="prop.evalString!==undefined" placeholder="{{prop.label}}" [id]="prop.key" [type]="prop.type" maxlength="{{prop.maxlength}}">
+            </mat-form-field>
+
+            <mat-form-field *ngSwitchCase="'number'">
+                <input matInput type="number" [readonly]="prop.evalString!==undefined" placeholder="{{prop.label}}" [formControlName]="prop.key" [id]="prop.key" [type]="prop.type">
+            </mat-form-field>
+
+            <mat-form-field *ngSwitchCase="'textarea'">
+                <textarea matInput placeholder="{{prop.label}}" [readonly]="prop.evalString!==undefined" [formControlName]="prop.key" [id]="prop.key"></textarea>
+            </mat-form-field>
+
+            <div *ngSwitchCase="'radio'">
+                <label *ngIf="(prop.caseVisible===undefined || prop.caseVisible)" [attr.for]="prop">{{prop.label}}</label>
+                <div>
+                    <mat-radio-group [name]="prop.key" [formControlName]="prop.key">
+                        <mat-radio-button *ngFor="let option of prop.options" [value]="option.value">{{option.label}}</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+            </div>
+            <div *ngSwitchCase="'select'">
+                <mat-select placeholder="{{prop.label}}" [formControlName]="prop.key" *ngIf="prop.caseVisible===undefined || prop.caseVisible">
+                    <mat-option *ngFor="let option of prop.options" [value]="option.value">
+                        {{ option.label }}
+                    </mat-option>
+                </mat-select>
+            </div>
+            <div *ngSwitchCase="'select_range'">
+                <mat-select placeholder="{{prop.label}}" [formControlName]="prop.key" *ngIf="prop.caseVisible===undefined || prop.caseVisible">
+                    <mat-option *ngFor="let i of prop.options" [value]="i">
+                        {{ i }}
+                    </mat-option>
+                </mat-select>
+            </div>
+            <div *ngSwitchCase="'description'">
+                <label *ngIf="(prop.caseVisible===undefined || prop.caseVisible)" [attr.for]="prop">{{prop.label}}</label>
+                <div [innerHTML]="prop.description"></div>
+            </div>
+            <div *ngSwitchCase="'checkbox'">
+                <label *ngIf="(prop.caseVisible===undefined || prop.caseVisible)" [attr.for]="prop">{{prop.label}}</label>
+                <input type="checkbox" [readonly]="prop.evalString!==undefined" placeholder="{{prop.label}}" [formControlName]="prop.key" [id]="prop.key" [type]="prop.type">
+            </div>
+        </div>
+
+        <div class="error" *ngIf="form.get(prop.key).invalid && (form.get(prop.key).dirty || form.get(prop.key).touched)">
+            <div *ngIf="form.get(prop.key).errors.required">
+                {{ prop.label }} is required.
+            </div>
+        </div>
+    </div>
+    <!-- <p>
+        <button type="submit">Save</button>
+    </p> -->
+</form>
+<!-- <hr />
+<strong>Form Value</strong>
+<pre *ngIf="form">{{ form.value | json }}</pre>
+<strong *ngIf="form">Form is valid:  {{form.valid}}</strong> -->

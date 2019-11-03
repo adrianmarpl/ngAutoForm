@@ -1,0 +1,84 @@
+{
+    "name": {
+        "type": "text",
+        "label": "Name",
+        "description": "",
+        "value": "",
+        "validation": {
+            "required": true
+        }
+    },
+    "surname": {
+        "type": "text",
+        "label": "Surname",
+        "description": "",
+        "value": "",
+        "validation": {
+            "required": true
+        }
+    },
+    "age18": {
+        "label": "Age > 18 old",
+        "type": "radio",
+        "value": "",
+        "validation": {
+            "required": true
+        },
+        "options": [
+            {
+                "label": "Yes",
+                "value": "1"
+            },
+            {
+                "label": "No",
+                "value": "0"
+            }
+        ]
+    },
+    "description": {
+        "type": "textarea",
+        "label": "Description",
+        "description": ""
+    },
+    "level": {
+        "label": "Level",
+        "type": "select",
+        "value": "",
+        "options": [
+            {
+                "label": "Junior",
+                "value": "junior"
+            },
+            {
+                "label": "Regular",
+                "value": "regular"
+            },
+            {
+                "label": "Senior",
+                "value": "senior"
+            }
+        ]
+    },
+    "salary": {
+        "type": "number",
+        "label": "Salary",
+        "description": "",
+        "value": ""
+    },
+    "other": {
+        "label": "Other",
+        "type": "checkbox",
+        "value": false,
+        "releatedFields": [
+            {
+                "key": "other_description",
+                "value": true
+            }
+        ]
+    },
+    "other_description": {
+        "type": "textarea",
+        "label": "Description",
+        "description": ""
+    }
+}

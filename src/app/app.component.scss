@@ -1,0 +1,12 @@
+.main{
+    display: flex;
+    .half-place{
+        flex: 50;
+    }
+    .result{
+        word-break: break-all;
+    }
+    p{
+        font-weight: 700;
+    }
+}

@@ -1,0 +1,14 @@
+<div class="page">
+
+  <h2>ngAutoForms</h2>
+  <div class="main">
+    <div class="form half-place">
+      <p>Form</p>
+      <auto-forms [dataObject]="personData" (formChanged)="changeData($event)"></auto-forms>
+    </div>
+    <div class="result half-place">
+      <p>Result</p>
+      {{result}}
+    </div>
+  </div>
+</div>
