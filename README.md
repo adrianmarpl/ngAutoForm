@@ -1,6 +1,6 @@
 # NgAutoForms
 
-!https://badge.fury.io/js/%40angular%2Fcore.svg!:https://badge.fury.io/js/%40angular%2Fcore
+[![npm version](https://badge.fury.io/js/%40angular%2Fcore.svg)](https://badge.fury.io/js/%40angular%2Fcore)
 
 **NgAutoForms** is project to generate automatic form UI from JSON.
 
@@ -20,7 +20,7 @@ npm i
 **3. Run the application**:
 ```
 ng serve
-
+```
 
 ## Example
 
